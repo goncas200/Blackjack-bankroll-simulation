@@ -11,6 +11,13 @@ Blackjack: 32/663 6400/132600
 using namespace std;
 vector<string> blackjack_game;
 
+void start_rand() {
+	timespec a;
+	auto l = timespec_get(&a, TIME_UTC);
+	srand(a.tv_nsec);
+	return;
+}
+
 int simulation(int bankroll, int amount_of_bet, int amount_of_hands) {
 	for (int i = 0; i < amount_of_hands; ++i) {
 		int number = (rand() * rand()) % 132600;
@@ -28,9 +35,7 @@ int simulation(int bankroll, int amount_of_bet, int amount_of_hands) {
 }
 
 int main() {
-	timespec a;
-	auto l = timespec_get(&a, TIME_UTC);
-	srand(a.tv_nsec);
+	start_rand();
 	for (int i = 0; i < 132600; ++i) {
 		if (i < 6400) {
 			blackjack_game.push_back("bj");
