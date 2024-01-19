@@ -18,7 +18,7 @@ void start_rand() {
 	return;
 }
 
-int simulation(int bankroll, int amount_of_bet, int amount_of_hands) {
+int simulation(float bankroll, int amount_of_bet, int amount_of_hands) {
 	for (int i = 0; i < amount_of_hands; ++i) {
 		int number = (rand() * rand()) % 132600;
 		if (blackjack_game[number] == "bj") {
@@ -47,7 +47,7 @@ int main() {
 			blackjack_game.push_back("l");
 		}
 	}
-	int bankroll;
+	float bankroll;
 	int amount_of_bet;
 	int amount_of_hands;
 	cout << "Welcome to the simulation of perfect strategy BJ!!!!!\n";
@@ -59,5 +59,6 @@ int main() {
 	cin >> amount_of_hands;
 
 	cout << "The final bankroll is: " << simulation(bankroll, amount_of_bet, amount_of_hands) << "\n";
+	system("pause");
 	return 0;
 }
